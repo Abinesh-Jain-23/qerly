@@ -15,10 +15,15 @@ class WelcomePageView extends GetResponsiveView<WelcomePageController> {
                 value: controller.language.value,
                 onChanged: (value) => controller.changeLanguage(),
               ),
+              Center(child: Text(controller.language.value ? 'En' : 'Jp')),
               CupertinoSwitch(
                 value: controller.isDarkMode.value,
                 onChanged: (value) => controller.changeTheme(),
               ),
+              Center(
+                  child: Text(
+                      controller.isDarkMode.value ? 'dark'.tr : 'light'.tr)),
+              const SizedBox(width: 10),
             ],
           ),
           body: Column(
@@ -26,12 +31,12 @@ class WelcomePageView extends GetResponsiveView<WelcomePageController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'welcome'.tr,
+                'qerly'.tr,
                 style: const TextStyle(fontSize: 48),
                 textAlign: TextAlign.center,
               ),
               Text(
-                'question1'.tr,
+                'description'.tr,
                 textAlign: TextAlign.center,
               )
             ],
@@ -46,7 +51,7 @@ class WelcomePageView extends GetResponsiveView<WelcomePageController> {
                     borderRadius: BorderRadius.circular(18.0))),
               ),
               onPressed: () => Get.toNamed('/email'),
-              child: const Text('Get Started'),
+              child: Text('started'.tr),
             ),
           ),
         ));

@@ -8,7 +8,7 @@ class EmailPageView extends GetResponsiveView<EmailPageController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-          appBar: AppBar(title: Text('email'.tr)),
+          appBar: AppBar(title: Text('qerly'.tr)),
           body: Container(
             padding: const EdgeInsets.all(20),
             child: Center(
@@ -16,8 +16,8 @@ class EmailPageView extends GetResponsiveView<EmailPageController> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: TextInputType.emailAddress,
                 controller: controller.textEditingController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter your email',
+                decoration: InputDecoration(
+                  labelText: 'label'.tr,
                   hintText: 'example@mail.com',
                 ),
                 onChanged: (value) => controller.email.value = value,
@@ -38,7 +38,7 @@ class EmailPageView extends GetResponsiveView<EmailPageController> {
                       controller.validateEmail(controller.email.value) != null
                   ? null
                   : controller.onContinuePressed,
-              child: const Text('Continue'),
+              child: Text('continue'.tr),
             ),
           ),
         ));

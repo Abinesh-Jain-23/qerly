@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:qerly/pages/email_page/email_page.variables.dart';
 
 class EmailPageController extends GetxController with EmailPageVariables {
@@ -14,11 +16,20 @@ class EmailPageController extends GetxController with EmailPageVariables {
         r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
     final regex = RegExp(pattern);
     return value!.isNotEmpty && !regex.hasMatch(value)
-        ? 'Enter a valid email address'
+        ? 'validation'.tr
         : null;
   }
 
-  onContinuePressed() {
+  onContinuePressed() async {
+    try {
+      final response = await api.post(
+        'https://querly.onrender.com',
+        {'email': textEditingController.text},
+      );
+      debugPrint('$response');
+    } catch (e) {
+      debugPrint('$e');
+    }
     Get.toNamed('/survey');
   }
 }
