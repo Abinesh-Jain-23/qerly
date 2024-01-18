@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qerly/pages/welcome_page/welcome_page.controller.dart';
@@ -10,11 +11,11 @@ class WelcomePageView extends GetResponsiveView<WelcomePageController> {
     return Obx(() => Scaffold(
           appBar: AppBar(
             actions: [
-              Switch(
+              CupertinoSwitch(
                 value: controller.language.value,
                 onChanged: (value) => controller.changeLanguage(),
               ),
-              Switch(
+              CupertinoSwitch(
                 value: controller.isDarkMode.value,
                 onChanged: (value) => controller.changeTheme(),
               ),
@@ -24,13 +25,29 @@ class WelcomePageView extends GetResponsiveView<WelcomePageController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('welcome'.tr),
-              ElevatedButton(
-                onPressed: () => Get.toNamed('/email'),
-                child: const Text('Get Started'),
+              Text(
+                'welcome'.tr,
+                style: const TextStyle(fontSize: 48),
+                textAlign: TextAlign.center,
               ),
-              Text('question1'.tr)
+              Text(
+                'question1'.tr,
+                textAlign: TextAlign.center,
+              )
             ],
+          ),
+          bottomNavigationBar: Container(
+            height: 46,
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0))),
+              ),
+              onPressed: () => Get.toNamed('/email'),
+              child: const Text('Get Started'),
+            ),
           ),
         ));
   }

@@ -10,7 +10,7 @@ class Qerly extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: LocalString(),
-      locale: const Locale('jp'),
+      locale: const Locale('en'),
       initialBinding: AppPages.initialBinding,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
